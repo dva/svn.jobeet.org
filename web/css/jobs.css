@@ -1,0 +1,72 @@
+.category .feed
+{
+  margin: 4px;
+  float: right;
+}
+
+.jobs
+{
+  width: 100%;
+}
+
+.jobs tr.even
+{
+  background-color: #F2F1EF;
+}
+
+.jobs tr.odd
+{
+  background-color: #fff;
+}
+
+.jobs td
+{
+  padding: 12px 15px;
+}
+
+.jobs .location
+{
+  color: #524F46;
+  font-weight: bold;
+  width: 30%;
+}
+
+.jobs .company
+{
+  color: #E73E00;
+  width: 30%;
+}
+
+.jobs .position
+{
+  color: #524F46;
+  width: 40%;
+}
+
+.more_jobs
+{
+  float: right;
+}
+
+.pagination_desc
+{
+  margin-left: 15px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.pagination
+{
+  margin-top: 10px;
+  float: right;
+}
+
+.pagination a
+{
+  margin-right: 4px;
+}
+
+.pagination img
+{
+  vertical-align: middle;
+}

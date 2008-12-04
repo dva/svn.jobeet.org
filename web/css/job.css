@@ -1,0 +1,116 @@
+#job .logo
+{
+  float: right;
+  margin-bottom: 20px;
+}
+
+#job h1
+{
+  font-size: 150%;
+}
+
+#job h2
+{
+  font-size: 110%;
+  font-style: italic;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  background-color: #e1dcbb;
+}
+
+#job h3
+{
+  font-size: 150%;
+  margin: 15px 0;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+#job h3 small
+{
+  font-size: 70%;
+}
+
+#job h4
+{
+  font-size: 110%;
+  margin: 20px 0 7px 0;
+  font-weight: bold;
+}
+
+#job .description
+{
+  font-size: 105%;
+  line-height: 1.4em;
+}
+
+#job_actions
+{
+  margin: 3px 0;
+  padding: 7px;
+  padding-left: 0;
+  background-color: #ffc;
+  list-style: none;
+}
+
+#job_actions ul
+{
+  display: inline;
+}
+
+#job_actions h3
+{
+  display: inline;
+  font-weight: bold;
+  margin-right: 15px;
+  padding: 7px;
+  background-color: #eee;
+}
+
+#job_actions li
+{
+  display: inline;
+  margin-right: 7px;
+}
+
+.expires_soon
+{
+  color: red;
+}
+
+#job_form
+{
+  width: 100%;
+}
+
+#job_form th
+{
+  white-space: nowrap;
+  font-style: italic;
+}
+
+#job_form td, #job_form th
+{
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  text-align: left;
+  vertical-align: top;
+  padding: 7px;
+}
+
+#job_form tfoot td, #job_form tfoot th
+{
+  border: 0;
+  text-align: right;
+}
+
+#job_form .radio_list li
+{
+  display: inline;
+}
+
+.meta
+{
+  float: right;
+  color: #77766F;
+}

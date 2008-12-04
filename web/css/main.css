@@ -1,0 +1,178 @@
+/*
+Reset CSS
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
+
+/*
+Fonts CSS
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0
+*/
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+
+a
+{
+  color: #524F46;
+}
+
+body
+{
+  font: 14px georgia,times,serif;
+  background: transparent url(../images/background.png) repeat-x 0 0;
+}
+
+#container
+{
+  width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#header h1
+{
+  margin-bottom: 3px;
+  background: transparent url(../images/background-header.gif) repeat-x 0 0;
+}
+
+#search_keywords
+{
+  font-size: 160%;
+  padding: 8px;
+  margin-bottom: 3px;
+  width: 340px;
+}
+
+#header .post
+{
+  float: right;
+  padding-right: 40px;
+  text-align: center;
+}
+
+#header .post div
+{
+  padding-top: 10px;
+  width: 110px;
+  height: 40px;
+  background: transparent url(../images/background-post.png) no-repeat 0 0;;
+  font-family: arial,sans-serif;
+}
+
+#header .post a
+{
+  font-size: 110%;
+  color: #fff;
+  text-decoration: none;
+}
+
+#sub_header
+{
+  padding: 15px;
+  padding-right: 0;
+  background-color: #150E00;
+}
+
+#sub_header h2
+{
+  color: #fff;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 140%;
+  margin-bottom: 7px;
+}
+
+#content h1
+{
+  padding: 4px 15px;
+  font-size: 124%;
+  font-weight: normal;
+  font-style: italic;
+  background-color: #e1dcbb;
+}
+
+
+#footer
+{
+  padding: 10px 3px;
+  margin-top: 60px;
+  font-size: 90%;
+  margin-bottom: 15px;
+}
+
+#footer a
+{
+  color: #77766F;
+}
+
+#footer ul
+{
+  display: inline;
+}
+
+#footer li
+{
+  list-style: none;
+  margin-right: 15px;
+  display: inline;
+}
+
+#footer .symfony
+{
+  font-family: arial,sans-serif;
+  font-size: 80%;
+}
+
+#footer .symfony img
+{
+  vertical-align: middle;
+}
+
+#footer .symfony
+{
+  float: right;
+  color: #666;
+}
+
+.feed
+{
+  padding-left: 20px;
+  background: transparent url(../images/feed.png) no-repeat 0 0;
+}
+
+.help
+{
+  color: #B5B5B5;
+  font-size: 80%;
+  font-style: italic;
+}
+
+.error_list
+{
+  color: red;
+}
+
+strong
+{
+  font-weight: bold;
+}
+
+.flash_notice
+{
+  margin: 3px 0;
+  padding: 7px;
+  background-color: #cfc;
+}
+
+.flash_error
+{
+  margin: 3px 0;
+  padding: 7px;
+  background-color: #f33;
+  color: #fff;
+}
