@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JobeetJobAffiliate filter form.
+ * JobeetCategoryAffiliate filter form.
  *
  * @package    jobeet
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfPropelFormFilterTemplate.php 11675 2008-09-19 15:21:38Z fabien $
  */
-class JobeetJobAffiliateFormFilter extends BaseJobeetJobAffiliateFormFilter
+class JobeetCategoryAffiliateFormFilter extends BaseJobeetCategoryAffiliateFormFilter
 {
   public function configure()
   {
