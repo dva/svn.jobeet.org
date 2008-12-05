@@ -71,23 +71,23 @@ CREATE TABLE `jobeet_affiliate`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
-#-- jobeet_job_affiliate
+#-- jobeet_category_affiliate
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `jobeet_job_affiliate`;
+DROP TABLE IF EXISTS `jobeet_category_affiliate`;
 
 
-CREATE TABLE `jobeet_job_affiliate`
+CREATE TABLE `jobeet_category_affiliate`
 (
-	`job_id` INTEGER  NOT NULL,
+	`category_id` INTEGER  NOT NULL,
 	`affiliate_id` INTEGER  NOT NULL,
-	PRIMARY KEY (`job_id`,`affiliate_id`),
-	CONSTRAINT `jobeet_job_affiliate_FK_1`
-		FOREIGN KEY (`job_id`)
-		REFERENCES `jobeet_job` (`id`)
+	PRIMARY KEY (`category_id`,`affiliate_id`),
+	CONSTRAINT `jobeet_category_affiliate_FK_1`
+		FOREIGN KEY (`category_id`)
+		REFERENCES `jobeet_category` (`id`)
 		ON DELETE CASCADE,
-	INDEX `jobeet_job_affiliate_FI_2` (`affiliate_id`),
-	CONSTRAINT `jobeet_job_affiliate_FK_2`
+	INDEX `jobeet_category_affiliate_FI_2` (`affiliate_id`),
+	CONSTRAINT `jobeet_category_affiliate_FK_2`
 		FOREIGN KEY (`affiliate_id`)
 		REFERENCES `jobeet_affiliate` (`id`)
 		ON DELETE CASCADE
