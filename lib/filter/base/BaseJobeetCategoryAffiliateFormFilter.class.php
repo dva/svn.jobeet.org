@@ -3,14 +3,14 @@
 require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
 
 /**
- * JobeetJobAffiliate filter form base class.
+ * JobeetCategoryAffiliate filter form base class.
  *
  * @package    jobeet
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 13459 2008-11-28 14:48:12Z fabien $
  */
-class BaseJobeetJobAffiliateFormFilter extends BaseFormFilterPropel
+class BaseJobeetCategoryAffiliateFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
@@ -20,7 +20,7 @@ class BaseJobeetJobAffiliateFormFilter extends BaseFormFilterPropel
     $this->setValidators(array(
     ));
 
-    $this->widgetSchema->setNameFormat('jobeet_job_affiliate_filters[%s]');
+    $this->widgetSchema->setNameFormat('jobeet_category_affiliate_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -29,13 +29,13 @@ class BaseJobeetJobAffiliateFormFilter extends BaseFormFilterPropel
 
   public function getModelName()
   {
-    return 'JobeetJobAffiliate';
+    return 'JobeetCategoryAffiliate';
   }
 
   public function getFields()
   {
     return array(
-      'job_id'       => 'ForeignKey',
+      'category_id'  => 'ForeignKey',
       'affiliate_id' => 'ForeignKey',
     );
   }

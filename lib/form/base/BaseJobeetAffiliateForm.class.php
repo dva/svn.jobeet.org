@@ -13,23 +13,25 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'id'                        => new sfWidgetFormInputHidden(),
-      'url'                       => new sfWidgetFormInput(),
-      'email'                     => new sfWidgetFormInput(),
-      'token'                     => new sfWidgetFormInput(),
-      'is_active'                 => new sfWidgetFormInputCheckbox(),
-      'created_at'                => new sfWidgetFormDateTime(),
-      'jobeet_job_affiliate_list' => new sfWidgetFormPropelChoiceMany(array('model' => 'JobeetJob')),
+      'id'                             => new sfWidgetFormInputHidden(),
+      'url'                            => new sfWidgetFormInput(),
+      'email'                          => new sfWidgetFormInput(),
+      'token'                          => new sfWidgetFormInput(),
+      'is_active'                      => new sfWidgetFormInputCheckbox(),
+      'created_at'                     => new sfWidgetFormDateTime(),
+      'jobeet_category_affiliate_list' => new sfWidgetFormPropelChoiceMany(array('model' => 'JobeetCategory')),
+      'jobeet_job_affiliate_list'      => new sfWidgetFormPropelChoiceMany(array('model' => 'JobeetJob')),
     ));
 
     $this->setValidators(array(
-      'id'                        => new sfValidatorPropelChoice(array('model' => 'JobeetAffiliate', 'column' => 'id', 'required' => false)),
-      'url'                       => new sfValidatorString(array('max_length' => 255)),
-      'email'                     => new sfValidatorString(array('max_length' => 255)),
-      'token'                     => new sfValidatorString(array('max_length' => 255)),
-      'is_active'                 => new sfValidatorBoolean(),
-      'created_at'                => new sfValidatorDateTime(array('required' => false)),
-      'jobeet_job_affiliate_list' => new sfValidatorPropelChoiceMany(array('model' => 'JobeetJob', 'required' => false)),
+      'id'                             => new sfValidatorPropelChoice(array('model' => 'JobeetAffiliate', 'column' => 'id', 'required' => false)),
+      'url'                            => new sfValidatorString(array('max_length' => 255)),
+      'email'                          => new sfValidatorString(array('max_length' => 255)),
+      'token'                          => new sfValidatorString(array('max_length' => 255)),
+      'is_active'                      => new sfValidatorBoolean(),
+      'created_at'                     => new sfValidatorDateTime(array('required' => false)),
+      'jobeet_category_affiliate_list' => new sfValidatorPropelChoiceMany(array('model' => 'JobeetCategory', 'required' => false)),
+      'jobeet_job_affiliate_list'      => new sfValidatorPropelChoiceMany(array('model' => 'JobeetJob', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -53,6 +55,17 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
   {
     parent::updateDefaultsFromObject();
 
+    if (isset($this->widgetSchema['jobeet_category_affiliate_list']))
+    {
+      $values = array();
+      foreach ($this->object->getJobeetCategoryAffiliates() as $obj)
+      {
+        $values[] = $obj->getCategoryId();
+      }
+
+      $this->setDefault('jobeet_category_affiliate_list', $values);
+    }
+
     if (isset($this->widgetSchema['jobeet_job_affiliate_list']))
     {
       $values = array();
@@ -70,7 +83,43 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
   {
     parent::doSave($con);
 
+    $this->saveJobeetCategoryAffiliateList($con);
     $this->saveJobeetJobAffiliateList($con);
+  }
+
+  public function saveJobeetCategoryAffiliateList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['jobeet_category_affiliate_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (is_null($con))
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(JobeetCategoryAffiliatePeer::AFFILIATE_ID, $this->object->getPrimaryKey());
+    JobeetCategoryAffiliatePeer::doDelete($c, $con);
+
+    $values = $this->getValue('jobeet_category_affiliate_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new JobeetCategoryAffiliate();
+        $obj->setAffiliateId($this->object->getPrimaryKey());
+        $obj->setCategoryId($value);
+        $obj->save();
+      }
+    }
   }
 
   public function saveJobeetJobAffiliateList($con = null)

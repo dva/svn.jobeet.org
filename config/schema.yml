@@ -30,6 +30,6 @@ propel:
     is_active:    { type: boolean, required: true, default: 0 }
     created_at:   ~
 
-  jobeet_job_affiliate:
-    job_id:       { type: integer, foreignTable: jobeet_job, foreignReference: id, required: true, primaryKey: true, onDelete: cascade }
+  jobeet_category_affiliate:
+    category_id:  { type: integer, foreignTable: jobeet_category, foreignReference: id, required: true, primaryKey: true, onDelete: cascade }
     affiliate_id: { type: integer, foreignTable: jobeet_affiliate, foreignReference: id, required: true, primaryKey: true, onDelete: cascade }
