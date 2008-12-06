@@ -21,4 +21,16 @@ class JobeetJob extends BaseJobeetJob
   {
     return sprintf('%s at %s (%s)', $this->getPosition(), $this->getCompany(), $this->getLocation());
   }
+  
+  public function save(PropelPDO $con = null)
+  {
+    if ($this->isNew() && !$this->getExpiresAt())
+    {
+      $now = $this->getCreatedAt() ? $this->getCreatedAt() : time();
+      $this->setExpiresAt($now + 86400 * sfConfig::get('app_active_days'));
+    }
+ 
+    return parent::save($con);
+  }
+
 }

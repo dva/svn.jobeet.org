@@ -3,13 +3,15 @@ job:
   options: { model: JobeetJob }
 
 job_show_user:
-  url:   /job/:company_slug/:location_slug/:id/:position_slug
+  url:     /job/:company_slug/:location_slug/:id/:position_slug
   class:   sfPropelRoute
-  options: { model: JobeetJob, type: object }
-  param: { module: job, action: show }
+  options: 
+    model: JobeetJob
+    type: object
+    method_for_criteria: doSelectActive
+  param:   { module: job, action: show }
   requirements:
     id: \d+
-    sf_method: [GET]
 
 # default rules
 homepage:
