@@ -15,12 +15,14 @@ class BaseJobeetCategoryForm extends BaseFormPropel
     $this->setWidgets(array(
       'id'                             => new sfWidgetFormInputHidden(),
       'name'                           => new sfWidgetFormInput(),
+      'slug'                           => new sfWidgetFormInput(),
       'jobeet_category_affiliate_list' => new sfWidgetFormPropelChoiceMany(array('model' => 'JobeetAffiliate')),
     ));
 
     $this->setValidators(array(
       'id'                             => new sfValidatorPropelChoice(array('model' => 'JobeetCategory', 'column' => 'id', 'required' => false)),
       'name'                           => new sfValidatorString(array('max_length' => 255)),
+      'slug'                           => new sfValidatorString(array('max_length' => 255)),
       'jobeet_category_affiliate_list' => new sfValidatorPropelChoiceMany(array('model' => 'JobeetAffiliate', 'required' => false)),
     ));
 
