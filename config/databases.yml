@@ -4,8 +4,12 @@ dev:
       classname: DebugPDO
 test:
   propel:
+    class: sfPropelDatabase
     param:
       classname: DebugPDO
+      dsn: 'mysql:host=localhost;dbname=jobeet_test'
+      username: root
+      password: null
 all:
   propel:
     class: sfPropelDatabase
@@ -13,7 +17,7 @@ all:
       classname: PropelPDO
       dsn: 'mysql:host=localhost;dbname=jobeet'
       username: root
-      password: 
+      password: null
       encoding: utf8
       persistent: true
       pooling: true
