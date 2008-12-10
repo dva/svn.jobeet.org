@@ -21,7 +21,6 @@ class BaseJobeetAffiliateFormFilter extends BaseFormFilterPropel
       'is_active'                      => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'created_at'                     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
       'jobeet_category_affiliate_list' => new sfWidgetFormPropelChoice(array('model' => 'JobeetCategory', 'add_empty' => true)),
-      'jobeet_job_affiliate_list'      => new sfWidgetFormPropelChoice(array('model' => 'JobeetJob', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -31,7 +30,6 @@ class BaseJobeetAffiliateFormFilter extends BaseFormFilterPropel
       'is_active'                      => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'created_at'                     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'jobeet_category_affiliate_list' => new sfValidatorPropelChoice(array('model' => 'JobeetCategory', 'required' => false)),
-      'jobeet_job_affiliate_list'      => new sfValidatorPropelChoice(array('model' => 'JobeetJob', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('jobeet_affiliate_filters[%s]');
@@ -66,31 +64,6 @@ class BaseJobeetAffiliateFormFilter extends BaseFormFilterPropel
     $criteria->add($criterion);
   }
 
-  public function addJobeetJobAffiliateListColumnCriteria(Criteria $criteria, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $criteria->addJoin(JobeetJobAffiliatePeer::AFFILIATE_ID, JobeetAffiliatePeer::ID);
-
-    $value = array_pop($values);
-    $criterion = $criteria->getNewCriterion(JobeetJobAffiliatePeer::JOB_ID, $value);
-
-    foreach ($values as $value)
-    {
-      $criterion->addOr($criteria->getNewCriterion(JobeetJobAffiliatePeer::JOB_ID, $value));
-    }
-
-    $criteria->add($criterion);
-  }
-
   public function getModelName()
   {
     return 'JobeetAffiliate';
@@ -106,7 +79,6 @@ class BaseJobeetAffiliateFormFilter extends BaseFormFilterPropel
       'is_active'                      => 'Boolean',
       'created_at'                     => 'Date',
       'jobeet_category_affiliate_list' => 'ManyKey',
-      'jobeet_job_affiliate_list'      => 'ManyKey',
     );
   }
 }

@@ -20,7 +20,6 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
       'is_active'                      => new sfWidgetFormInputCheckbox(),
       'created_at'                     => new sfWidgetFormDateTime(),
       'jobeet_category_affiliate_list' => new sfWidgetFormPropelChoiceMany(array('model' => 'JobeetCategory')),
-      'jobeet_job_affiliate_list'      => new sfWidgetFormPropelChoiceMany(array('model' => 'JobeetJob')),
     ));
 
     $this->setValidators(array(
@@ -31,7 +30,6 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
       'is_active'                      => new sfValidatorBoolean(),
       'created_at'                     => new sfValidatorDateTime(array('required' => false)),
       'jobeet_category_affiliate_list' => new sfValidatorPropelChoiceMany(array('model' => 'JobeetCategory', 'required' => false)),
-      'jobeet_job_affiliate_list'      => new sfValidatorPropelChoiceMany(array('model' => 'JobeetJob', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -66,17 +64,6 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
       $this->setDefault('jobeet_category_affiliate_list', $values);
     }
 
-    if (isset($this->widgetSchema['jobeet_job_affiliate_list']))
-    {
-      $values = array();
-      foreach ($this->object->getJobeetJobAffiliates() as $obj)
-      {
-        $values[] = $obj->getJobId();
-      }
-
-      $this->setDefault('jobeet_job_affiliate_list', $values);
-    }
-
   }
 
   protected function doSave($con = null)
@@ -84,7 +71,6 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
     parent::doSave($con);
 
     $this->saveJobeetCategoryAffiliateList($con);
-    $this->saveJobeetJobAffiliateList($con);
   }
 
   public function saveJobeetCategoryAffiliateList($con = null)
@@ -117,41 +103,6 @@ class BaseJobeetAffiliateForm extends BaseFormPropel
         $obj = new JobeetCategoryAffiliate();
         $obj->setAffiliateId($this->object->getPrimaryKey());
         $obj->setCategoryId($value);
-        $obj->save();
-      }
-    }
-  }
-
-  public function saveJobeetJobAffiliateList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['jobeet_job_affiliate_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (is_null($con))
-    {
-      $con = $this->getConnection();
-    }
-
-    $c = new Criteria();
-    $c->add(JobeetJobAffiliatePeer::AFFILIATE_ID, $this->object->getPrimaryKey());
-    JobeetJobAffiliatePeer::doDelete($c, $con);
-
-    $values = $this->getValue('jobeet_job_affiliate_list');
-    if (is_array($values))
-    {
-      foreach ($values as $value)
-      {
-        $obj = new JobeetJobAffiliate();
-        $obj->setAffiliateId($this->object->getPrimaryKey());
-        $obj->setJobId($value);
         $obj->save();
       }
     }
