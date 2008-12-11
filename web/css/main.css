@@ -176,3 +176,21 @@ strong
   background-color: #f33;
   color: #fff;
 }
+
+#job_history
+{
+  padding: 7px;
+  background: #eee;
+  font-size: 80%;
+}
+ 
+#job_history ul
+{
+  display: inline;
+}
+ 
+#job_history li
+{
+  margin-right: 10px;
+  display: inline;
+}
