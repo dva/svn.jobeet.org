@@ -66,5 +66,13 @@ class JobeetTestFunctional extends sfTestFunctional
  
     return JobeetJobPeer::doSelectOne($criteria);
   }
+
+  public function getProgrammingCategory()
+  {
+    $criteria = new Criteria();
+    $criteria->add(JobeetCategoryPeer::SLUG, 'programming');
+ 
+    return JobeetCategoryPeer::doSelectOne($criteria);
+  }
 }
 
