@@ -39,4 +39,10 @@ class JobeetCategory extends BaseJobeetCategory
     return JobeetJobPeer::addActiveJobsCriteria($criteria);
   }
 
+  public function getLatestPost()
+  {
+    $jobs = $this->getActiveJobs(1);
+ 
+    return $jobs[0];
+  }
 }
