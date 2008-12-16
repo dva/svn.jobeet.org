@@ -70,7 +70,7 @@ class JobeetJobPeer extends BaseJobeetJobPeer
 	{
 	  ProjectConfiguration::registerZend();
 
-	  if (file_exists($index = self::getLuceneIndex()))
+	  if (file_exists($index = self::getLuceneIndexFile()))
 	  {
 	    return Zend_Search_Lucene::open($index);
 	  }
@@ -87,7 +87,7 @@ class JobeetJobPeer extends BaseJobeetJobPeer
 	
 	public static function doDeleteAll($con = null)
 	{
-	  if (file_exists($index = self::getLuceneIndex()))
+	  if (file_exists($index = self::getLuceneIndexFile()))
 	  {
 	    sfToolkit::clearDirectory($index);
 	    rmdir($index);
