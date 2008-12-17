@@ -99,11 +99,23 @@ class jobActions extends sfActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    if (!$query = $request->getParameter('query'))
-    {
-      return $this->forward('job', 'index');
-    }
- 
-    $this->jobs = JobeetJobPeer::getForLuceneQuery($query);
+	  if (!$query = $request->getParameter('query'))
+	  {
+	    return $this->forward('job', 'index');
+	  }
+
+	  $this->jobs = JobeetJobPeer::getForLuceneQuery($query);
+
+	  if ($request->isXmlHttpRequest())
+	  {
+	    if ('*' == $query || !$this->jobs)
+	    {
+	      return $this->renderText('No results.');
+	    }
+	    else
+	    {
+	      return $this->renderPartial('job/list', array('jobs' => $this->jobs));
+	    }
+	  }
   }
 }
