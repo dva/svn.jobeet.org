@@ -34,7 +34,9 @@ class JobeetJob extends BaseJobeetJob
     {
       $this->setToken(sha1($this->getEmail().rand(11111, 99999)));
     }
- 
+
+    $con = $con ? $con : Propel::getConnection(JobeetJobPeer::DATABASE_NAME);
+
 	  $con->beginTransaction();
 	  try
 	  {

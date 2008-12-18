@@ -30,12 +30,17 @@
 <?php endif; ?>
  
 <div class="pagination_desc">
-  <strong><?php echo $pager->getNbResults() ?></strong> jobs in this category
+  <?php echo format_number_choice(
+	    '[0]No job in this category|[1]One job in this category|(1,+Inf]%count% jobs in this category',
+	    array('%count%' => '<strong>'.$pager->getNbResults().'</strong>'),
+	    $pager->getNbResults()
+	  )
+	?>
  
   <?php if ($pager->haveToPaginate()): ?>
-    - page <strong><?php echo $pager->getPage() ?>/<?php echo $pager->getLastPage() ?></strong>
+    - <?php echo __('page'); ?> <strong><?php echo $pager->getPage() ?>/<?php echo $pager->getLastPage() ?></strong>
   <?php endif; ?>
 </div>
 <div class="feed">
-  <a href="<?php echo url_for('category', array('sf_subject' => $category, 'sf_format' => 'atom')) ?>">RSS feed</a>
+  <a href="<?php echo url_for('category', array('sf_subject' => $category, 'sf_format' => 'atom')) ?>"><?php echo __('RSS feed'); ?></a>
 </div>

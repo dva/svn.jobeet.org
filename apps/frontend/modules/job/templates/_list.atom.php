@@ -19,7 +19,7 @@
          <?php echo simple_format_text($job->getDescription()) ?>
        </div>
  
-       <h4>How to apply?</h4>
+       <h4><?php echo __('How to apply?'); ?></h4>
  
        <p><?php echo $job->getHowToApply() ?></p>
      </div>

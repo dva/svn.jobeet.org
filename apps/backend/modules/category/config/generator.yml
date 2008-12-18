@@ -26,6 +26,6 @@ generator:
           _list:   ~
           _save:   ~
       edit:
-        title: Editing Category "%%name%%" (#%%id%%)
+        # title: Editing Category "%%name%%" (#%%id%%)
       new:
         title: New Category

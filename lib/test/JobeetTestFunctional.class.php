@@ -13,7 +13,7 @@ class JobeetTestFunctional extends sfTestFunctional
   {
     // most recent job in the programming category
     $criteria = new Criteria();
-    $criteria->add(JobeetCategoryPeer::SLUG, 'programming');
+    $criteria->add(JobeetCategoryI18NPeer::SLUG, 'programming');
     $category = JobeetCategoryPeer::doSelectOne($criteria);
  
     $criteria = new Criteria();
@@ -36,7 +36,7 @@ class JobeetTestFunctional extends sfTestFunctional
   public function createJob($values = array(), $publish = false)
   {
     $this->
-      get('/job/new')->
+      get('/en/job/new')->
       click('Preview your job', array('job' => array_merge(array(
         'company'      => 'Sensio Labs',
         'url'          => 'http://www.sensio.com/',
@@ -70,7 +70,7 @@ class JobeetTestFunctional extends sfTestFunctional
   public function getProgrammingCategory()
   {
     $criteria = new Criteria();
-    $criteria->add(JobeetCategoryPeer::SLUG, 'programming');
+    $criteria->add(JobeetCategoryI18NPeer::SLUG, 'programming');
  
     return JobeetCategoryPeer::doSelectOne($criteria);
   }

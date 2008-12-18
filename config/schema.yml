@@ -1,6 +1,11 @@
 propel:
   jobeet_category:
+    _attributes:  { isI18N: true, i18nTable: jobeet_category_i18n }
     id:           ~
+
+  jobeet_category_i18n:
+    id:           { type: integer, required: true, primaryKey: true, foreignTable: jobeet_category, foreignReference: id }
+    culture:      { isCulture: true, type: varchar, size: 7, required: true, primaryKey: true }
     name:         { type: varchar(255), required: true }
     slug:         { type: varchar(255), required: true }
 

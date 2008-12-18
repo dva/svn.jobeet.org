@@ -26,12 +26,12 @@
     <?php echo simple_format_text($job->getDescription()) ?>
   </div>
  
-  <h4>How to apply?</h4>
+  <h4><?php echo __('How to apply?'); ?></h4>
  
   <p class="how_to_apply"><?php echo $job->getHowToApply() ?></p>
  
   <div class="meta">
-    <small>posted on <?php echo $job->getCreatedAt('m/d/Y') ?></small>
+    <small><?php echo __('posted on %date%', array('date' => $job->getCreatedAt('m/d/Y')); ?></small>
   </div>
 
 </div>

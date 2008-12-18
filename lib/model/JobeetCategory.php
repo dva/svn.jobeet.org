@@ -22,14 +22,6 @@ class JobeetCategory extends BaseJobeetCategory
 
     return JobeetJobPeer::doCount($criteria);
   }
-
-
-  public function setName($name)
-  {
-    parent::setName($name);
-
-    $this->setSlug(Jobeet::slugify($name));
-  }
   
   public function getActiveJobsCriteria()
   {

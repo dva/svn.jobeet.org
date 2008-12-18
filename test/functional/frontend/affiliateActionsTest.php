@@ -8,7 +8,7 @@ $browser->loadData();
 $browser->
   info('1 - An affiliate can create an account')->
  
-  get('/affiliate/new')->
+  get('/en/affiliate/new')->
   click('Submit', array('jobeet_affiliate' => array(
     'url'                            => 'http://www.example.com/',
     'email'                          => 'foo@example.com',
@@ -20,7 +20,7 @@ $browser->
  
   info('2 - An affiliate must at leat select one category')->
  
-  get('/affiliate/new')->
+  get('/en/affiliate/new')->
   click('Submit', array('jobeet_affiliate' => array(
     'url'   => 'http://www.example.com/',
     'email' => 'foo@example.com',

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Jobeet</title>
-  <subtitle>Latest Jobs</subtitle>
+  <subtitle><?php echo __('Latest Jobs'); ?></subtitle>
   <link href="<?php echo url_for('@job?sf_format=atom', true) ?>" rel="self"/>
   <link href="<?php echo url_for('@homepage', true) ?>"/>
   <updated><?php echo gmstrftime('%Y-%m-%dT%H:%M:%SZ', JobeetJobPeer::getLatestPost()->getCreatedAt('U')) ?></updated>

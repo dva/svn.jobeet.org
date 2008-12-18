@@ -4,7 +4,7 @@
   <head>
     <title>
         <?php if (!include_slot('title')): ?>
-          Jobeet - Your best job board
+          Jobeet - <?php echo __('Your best job board'); ?>
         <?php endif; ?>
     </title>
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -42,18 +42,18 @@
             <div class="post">
               <h2>Ask for people</h2>
               <div>
-                <a href="<?php echo url_for('@job_new') ?>">Post a Job</a>
+                <a href="<?php echo url_for('@job_new') ?>"><?php echo __('Post a Job'); ?></a>
               </div>
             </div>
  
 						<div class="search">
-						  <h2>Ask for a job</h2>
+						  <h2><?php echo __('Ask for a job'); ?></h2>
 						  <form action="<?php echo url_for('@job_search') ?>" method="get">
 						    <input type="text" name="query" value="<?php echo $sf_request->getParameter('query') ?>" id="search_keywords" />
 						    <input type="submit" value="search" />
 						    <img id="loader" src="/images/loader.gif" style="vertical-align: middle; display: none" />
 						    <div class="help">
-						      Enter some keywords (city, country, position, ...)
+						      <?php echo __('Enter some keywords (city, country, position, ...)'); ?>
 						    </div>
 						  </form>
 						</div>
@@ -71,7 +71,7 @@
         <?php endif; ?>
  
         <div id="job_history">
-          Recent viewed jobs:
+          <?php echo __('Recent viewed jobs:'); ?>
           <ul>
             <?php foreach ($sf_user->getJobHistory() as $job): ?>
               <li>
@@ -93,14 +93,21 @@
             powered by <a href="http://www.symfony-project.org/">
             <img src="/images/symfony.gif" alt="symfony framework" /></a>
           </span>
-          <ul>
-            <li><a href="">About Jobeet</a></li>
-            <li class="feed">
-              <a href="<?php echo url_for('@job?sf_format=atom') ?>">Full RSS feed</a>
-            </li>
-            <li><a href="">Jobeet API</a></li>
-            <li class="last"><a href="<?php echo url_for('@affiliate_new') ?>">Become an affiliate</a></li>
-          </ul>
+			    <ul>
+			      <li>
+			        <a href=""><?php echo __('About Jobeet') ?></a>
+			      </li>
+			      <li class="feed">
+			        <?php echo link_to(__('Feed'), '@job?sf_format=atom') ?>
+			      </li>
+			      <li>
+			        <a href=""><?php echo __('Jobeet API') ?></a>
+			      </li>
+			      <li class="last">
+			        <?php echo link_to(__('Become an affiliate'), '@affiliate_new') ?>
+			      </li>
+			    </ul>
+  				<?php include_component('language', 'language') ?>
         </div>
       </div>
     </div>

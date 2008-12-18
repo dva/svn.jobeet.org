@@ -13,9 +13,26 @@ DROP TABLE IF EXISTS `jobeet_category`;
 CREATE TABLE `jobeet_category`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- jobeet_category_i18n
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `jobeet_category_i18n`;
+
+
+CREATE TABLE `jobeet_category_i18n`
+(
+	`id` INTEGER  NOT NULL,
+	`culture` VARCHAR(7)  NOT NULL,
 	`name` VARCHAR(255)  NOT NULL,
 	`slug` VARCHAR(255)  NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`,`culture`),
+	CONSTRAINT `jobeet_category_i18n_FK_1`
+		FOREIGN KEY (`id`)
+		REFERENCES `jobeet_category` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

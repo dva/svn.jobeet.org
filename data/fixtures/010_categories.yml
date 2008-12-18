@@ -1,5 +1,16 @@
 JobeetCategory:
-  design:        { name: Design }
-  programming:   { name: Programming }
-  manager:       { name: Manager }
-  administrator: { name: Administrator }
+  design:        { }
+  programming:   { }
+  manager:       { }
+  administrator: { }
+ 
+JobeetCategoryI18n:
+  design_en:        { id: design, culture: en, name: Design }
+  programming_en:   { id: programming, culture: en, name: Programming }
+  manager_en:       { id: manager, culture: en, name: Manager }
+  administrator_en: { id: administrator, culture: en, name: Administrator }
+ 
+  design_fr:        { id: design, culture: fr, name: Design }
+  programming_fr:   { id: programming, culture: fr, name: Programmation }
+  manager_fr:       { id: manager, culture: fr, name: Manager }
+  administrator_fr: { id: administrator, culture: fr, name: Administrateur }
