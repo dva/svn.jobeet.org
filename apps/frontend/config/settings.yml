@@ -30,6 +30,15 @@ all:
 
     i18n:                   on
     standard_helpers:       [Partial, Cache, I18N]
+    
+    enabled_modules:
+      - default
+      - sfJobeetAffiliate
+      - sfJobeetApi
+      - sfJobeetCategory
+      - sfJobeetJob
+      - sfJobeetLanguage
+      
 #all:
 #  .actions:
 #    error_404_module:       default   # To be called when a 404 error is raised
