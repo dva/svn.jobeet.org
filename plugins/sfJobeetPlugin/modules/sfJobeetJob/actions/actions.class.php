@@ -91,14 +91,20 @@ class sfJobeetJobActions extends sfActions
   
   public function executePublish(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
+	  $request->checkCSRFProtection();
 
-    $job = $this->getRoute()->getObject();
-    $job->publish();
+	  $job = $this->getRoute()->getObject();
+	  $job->publish();
 
-    $this->getUser()->setFlash('notice', sprintf('Your job is now online for %s days.', sfConfig::get('app_active_days')));
+	  if ($cache = $this->getContext()->getViewCacheManager())
+	  {
+	    $cache->remove('sfJobeetJob/index?sf_culture=*');
+	    $cache->remove('sfJobeetCategory/show?id='.$job->getJobeetCategory()->getId());
+	  }
 
-    $this->redirect($this->generateUrl('job_show_user', $job));
+	  $this->getUser()->setFlash('notice', sprintf('Your job is now online for %s days.', sfConfig::get('app_active_days')));
+
+	  $this->redirect($this->generateUrl('job_show_user', $job));
   }
 
   public function executeExtend(sfWebRequest $request)

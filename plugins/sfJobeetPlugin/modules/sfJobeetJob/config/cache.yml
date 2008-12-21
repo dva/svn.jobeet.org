@@ -1,0 +1,13 @@
+new:
+  enabled:     on
+ 
+index:
+  enabled:     on
+  lifetime:    600
+
+show:
+  enabled:     on
+  with_layout: false
+ 
+all:
+  with_layout: true

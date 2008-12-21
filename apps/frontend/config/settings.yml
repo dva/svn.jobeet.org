@@ -14,10 +14,18 @@ dev:
 test:
   .settings:
     error_reporting:        <?php echo ((E_ALL | E_STRICT) ^ E_NOTICE)."\n" ?>
-    cache:                  off
+    cache:                  on
     web_debug:              off
     no_script_name:         off
     etag:                   off
+
+cache:
+  .settings:
+    error_reporting: <?php echo (E_ALL | E_STRICT)."\n" ?>
+    web_debug:       on
+    cache:           on
+    etag:            off
+
 
 all:
   .settings:

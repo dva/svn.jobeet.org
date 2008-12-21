@@ -238,3 +238,16 @@ $browser->
   isRedirected()->followRedirect()->
   with('user')->isCulture('fr')
 ;
+
+$browser->
+  info('  7 - Job creation page')->
+ 
+  get('/fr/')->
+  with('view_cache')->isCached(true, true)->
+ 
+  createJob(array('category_id' => $browser->getProgrammingCategory()->getId()), true)->
+ 
+  get('/fr/')->
+  with('view_cache')->isCached(true, true)->
+  with('response')->checkElement('.category_programming .more_jobs', '/29/')
+;

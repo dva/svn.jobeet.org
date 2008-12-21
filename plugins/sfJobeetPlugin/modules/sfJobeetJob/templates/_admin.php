@@ -13,16 +13,16 @@
         <?php if ($job->isExpired()): ?>
           <?php echo __('Expired'); ?>
         <?php else: ?>
-          <?php echo __('Expires in <strong>%days%</strong> days', array('days' => $job->getDaysBeforeExpires()); ?>
+          <?php echo __('Expires in <strong>%days%</strong> days', array('days' => $job->getDaysBeforeExpires())); ?>
         <?php endif; ?>
  
         <?php if ($job->expiresSoon()): ?>
-         - <?php echo link_to(__('Extend'), 'job_extend', $job, array('method' => 'put')) ?> <?php echo __('for another %days% days', array('days' => sfConfig::get('app_active_days')); ?>
+         - <?php echo link_to(__('Extend'), 'job_extend', $job, array('method' => 'put')) ?> <?php echo __('for another %days% days', array('days' => sfConfig::get('app_active_days'))); ?>
         <?php endif; ?>
       </li>
     <?php else: ?>
       <li>
-        [<?php echo __('Bookmark this %job% to manage this job in the future.', array('job' =>  link_to('URL', 'job_show', $job, true)); ?>]
+        [<?php echo __('Bookmark this %job% to manage this job in the future.', array('job' =>  link_to('URL', 'job_show', $job, true))); ?>]
       </li>
     <?php endif; ?>
   </ul>
